@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.theme-dark {
+			/*Main Colors*/
+			--color: white;
+			--background-color: #333;
+
+			/*Header Colors*/
+			--header-background-color: #222;
+			--header-color: white;
+			--header-border-color: #7298da;
+
+			/*Section Colors*/
+			--section-color: white;
+			--section-background-color: #222;
+
+			/*Code Colors*/
+			--code-background-color: #313131;
+			--code-border-color: ;
+			--code-color: #7298da;
+			--code-comment-color: #526d9c;
+
+			/*Footer Colors*/
+			--footer-background-color: #222; 
+		}
+
+		.theme-light {
+			/*Main Colors*/
+			--color: black;
+			--background-color: white;
+
+			/*Header Colors*/
+			--header-background-color: #dedede; 
+			--header-color: black;
+			--header-border-color: black;
+
+			/*Section Colors*/
+			--section-color: black;
+			--section-background-color: #dedede;
+
+			/*Code Colors*/
+			--code-background-color: #c1c1c1;
+			--code-border-color: black;
+			--code-color: black;
+			--code-comment-color: #868686;
+
+			/*Footer Colors*/
+			--footer-background-color: #dedede; 
+		}
+
+		.test-theme-dark {
+			--test-background-color: black;
+			--test-color: white;
+		}
+
+		.test-theme-light {
+			--test-color: black;
+			--test-background-color: white;
+		}
+
+		#test {
+			color: var(--test-color);
+			background-color: var(--test-background-color);
+		}
+
+		body {
+			color: var(--color) !important;
+			background-color: var(--background-color) !important;
+		}
+
+		.header {
+			background-color: var(--header-background-color);
+			color: var(--header-color);
+			border-bottom: 1px solid var(--header-border-color);
+		}
+
+		.section {
+			padding: 10px;
+			margin: 50px 50px 0px 50px; 
+			color: var(--section-color);
+			background-color: var(--section-background-color);
+		}
+
+		
+        .code {
+  			background-color: var(--code-background-color) !important;
+  			border: 1px solid var(--code-border-color) !important;
+  			color: var(--code-color) !important;
+  			display: block;
+ 	 		padding: 20px;
+    	}
+
+    	.code p {
+    		color: var(--code-comment-color);
+    	}
+
+		.footer {
+			background-color: var(--footer-background-color);
+			position:fixed;
+			margin-top: 30px;
+   			left:0px;
+   			bottom:0px;
+		}
+
+	</style>
+	<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <link href="https://asterkidev.ml/assets/icon.png" rel="icon" type="image/png">
+	<title>Theme Switcher</title>
+</head>
+<body id="body" class="theme-dark">
+	<header class="container-fluid text-center header">
+		<h1>Theme Switcher</h1>
+		<p>This page will teach you how make a theme switcher with JavaScript</p>
+	</header>
+	<section class="container section">
+		<p>FIrst we will need add 2 new classes to our css, those will be the name of the themes, you can add as many new themes as you want, just remember that you will need add a new class for each theme, this time, we will just use 2, a dark mode and a light mode.</p>
+		<div class="code">
+			.theme-dark { <br>
+		} <br><br>
+			.theme.light { <br>
+		}
+		</div>
+		<br><br>
+		Then, we will need some HTML, we will give the body tag an id, and also a default theme defined by the class name, and that will be the dark theme. also add an checkbox type input, we will give it an id and set it checked because the dark theme is on, also add a onclick event, that will detect when the user clicks the checkbox and change the theme.
+		<div class="code">
+			<script style="display: block" type="text/html"><!DOCTYPE html></script>
+			<script style="display: block" type="text/html"><html></script>
+			<script style="display: block" type="text/html"><head></script>
+			<script style="display: block" type="text/html"></head></script>
+			<script style="display: block" type="text/html"><body id="body" class="dark-theme"></script>
+			<script style="display: block" type="text/html"><p>This is a test</p></script>
+			<script style="display: block" type="text/html"><input type="checkbox" onclick="setTheme()" checked="true" id="theme-switch"> Dark Mode</script>
+			<script style="display: block" type="text/html"><script type="text/javascript" src="theme-switch.js"></script></script>
+			<script style="display: block" type="text/html"></body></script>
+			<script style="display: block" type="text/html"><html></script>
+		</div>
+		<br><br>
+		And also, some JavaScript, we will save this in a new file called theme-switch.js
+			<div class="code">
+				function setTheme() { <br> <p>// Declare the function</p>
+    			let body = document.getElementById("body"); <br> <p>// Declare the body tag with the id we added to the body tag</p>
+    			let checkBox = document.getElementById('theme-switch'); <br> <p>// Declare the checkbox input.</p>
+				<br>
+  			    if (checkBox.checked == true) {<br> <p>// When the checkbox is clicked, it will check if it's checked, if true, will add the dark-theme class, and remove the light-theme class</p>
+					body.classList.add("theme-dark"); <br>
+        			body.classList.remove("theme-light"); <br>
+      			} else { <br> <p>// Else if not, will remove the dark-theme class and add the light theme class</p>
+        			body.classList.add("theme-light"); <br>
+       				body.classList.remove("theme-dark"); <br>
+      			}
+			}
+			</div>
+			<br><br>
+			<p>And we're almost done, then comes the hard part, the css</p>
+			<br><br>
+			<p>We will just use a text tag for now, but you can use this with any tag</p>
+			<div class="code">
+				.theme-dark { <br>
+				--text-color: white; <p>/* We use the -- to declare a variable, and we're giving the variable "text-color" the property "white" */</p>
+				--background-color; <br>
+			} <br><br>
+				.theme-light { <br>
+				--text-color: black; <br>
+				--background-color: white; <br>
+			}
+			<br><br>
+			/* Then we will need apply the changes
+			<br><br>
+			body { <br>
+			background-color: var(--background-color); <p>/* And that's how you apply the variables to the properties.</p>
+			color: var(--color); <br>
+		}
+			</div><br><br>
+			That would make the work, so, test it:<br>
+			<div id="test" class="test-theme-dark container">
+				<p id="text">This is a test</p>
+				<input type="checkbox" checked="true" id="test-theme-switch" onclick='
+				function testSetTheme() {
+    			let body = document.getElementById("test");
+    			let checkBox = document.getElementById("test-theme-switch");
+
+  			    if (checkBox.checked == true) {
+					body.classList.add("test-theme-dark");
+        			body.classList.remove("test-theme-light");
+      			} else {
+        			body.classList.add("test-theme-light");
+       				body.classList.remove("test-theme-dark");
+      			}
+			} testSetTheme()'>
+			</div>
+			<p>You can do this on a bigger scale, check the page source for an example.</p>
+	</section>
+	<div style="margin-bottom: 50px;"></div>
+	<footer class="footer container-fluid">
+		<script type="text/javascript">
+			function setTheme() {
+    			let body = document.getElementById("body");
+    			let checkBox = document.getElementById('theme-switch');
+
+  			    if (checkBox.checked == true) {
+					body.classList.add("theme-dark");
+        			body.classList.remove("theme-light");
+      			} else {
+        			body.classList.add("theme-light");
+       				body.classList.remove("theme-dark");
+      			}
+			}
+		</script>
+		<input type="checkbox" onclick="setTheme()" checked="true" id="theme-switch"> Dark Mode
+	</footer>
+</body>
+</html>
