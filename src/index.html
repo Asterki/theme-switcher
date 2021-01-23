@@ -51,11 +51,13 @@
 	<!DOCTYPE html>
 	<html>
 		<head>
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta charset="utf-8">
 		</head>
 		<body id="body" class="dark-theme">
 			<p>This is a test</p>
-			<input type="checkbox" onclick="setTheme()" checked="true" id="theme-switch"> Dark Mode
 			<script type="text/javascript" src="theme-switch.js">
+			<input type="checkbox" onclick="setTheme()" checked="true" id="theme-switch"> Dark Mode
 		</body>
 	</html>
                             </script>
@@ -66,7 +68,7 @@
                             And also, some JavaScript, we will save this in a new file called theme-switch.js
                             <div class="code">
                               <code class="language-js">
-	function SetTheme() {
+	function setTheme() {
     	let body = document.getElementById("test");
     	let checkBox = document.getElementById("test-theme-switch");
 
@@ -94,7 +96,7 @@
 	.theme-dark {
 		--text-color: white;
 		/* We use the -- to declare a variable, and we're giving the variable "text-color" the property "white" */
-		--background-color;
+		--background-color: #333;
 	}
 
 	.theme-light {
